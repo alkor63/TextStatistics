@@ -26,7 +26,6 @@ public class Main {
         String inputPatterns = readFileAsString(
                 "D:\\TestPatterns.txt");
 
-        System.out.println("Шаблоны:\n" + inputPatterns);
         Map<String, Integer> patternsMap = new LinkedHashMap<>();
         Scanner scan = new Scanner(inputPatterns);
         while (scan.hasNext()) {
@@ -34,19 +33,14 @@ public class Main {
             patternsMap.put(p, 0);
         }
         // Собрали шаблоны в мапу. Пока все value=0
-        System.out.println("Частотное распределение шаблонов в тексте :");
-        System.out.println("шаблон \t количество ");
-        for (HashMap.Entry<String, Integer> anyPattern : patternsMap.entrySet()) {
-            System.out.println("   " + anyPattern.getKey() + "\t " + anyPattern.getValue());
-        }
+
         // Читаем слова из входного текста
         String inputText = readFileAsString(
                 "D:\\TestText.txt");
-//                "Отец мой Андрей Петрович Гринев в молодости своей служил " +
-//                "при графе Минихе и вышел в отставку премьер-майором в 17.. году.";
+
         scan = new Scanner(inputText);
         while (scan.hasNext()) {
-            String word = scan.next(); //scanner automatically uses " " as a delimiter
+            String word = scan.next();
             for (HashMap.Entry<String, Integer> anyPattern : patternsMap.entrySet()) {
                 String pattern = anyPattern.getKey();
                 char[] charArray = pattern.toCharArray();
